@@ -1,0 +1,174 @@
+			<!-- Start Content -->
+      <div class="content content-two">
+
+        <!-- Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+                    <div class="flex-grow-1">
+                        <h4 class="fs-18 fw-semibold mb-0">Calendar</h4>
+                    </div>
+                    <div class="text-end">
+                        <ol class="breadcrumb m-0 py-0">
+                            <li class="breadcrumb-item"><a [routerLink]="routes.index">Home</a></li>                              
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Applications</a></li>                            
+                            <li class="breadcrumb-item active">Calendar</li>
+                        </ol>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+ <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                    <div class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle btn btn-outline-light btn-sm bg-white text-dark d-inline-flex align-items-center drop-arrow-none" data-bs-toggle="dropdown">
+                            <i class="ti ti-file-export me-1"></i>Export<i class="ti ti-chevron-down align-middle ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-start">
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#add_event" class="btn btn-sm btn-primary">
+							<i class="ti ti-plus me-1"></i>Create
+						</a>
+                    </div>
+                </div>
+
+
+        <!-- Start Card -->
+        <div class="card mb-0">
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+        <!-- end card -->
+
+    </div>
+<!-- End Content -->
+
+
+        <!-- Add New Event Start -->
+        <div class="modal fade" id="add_event">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title">Add New Event</h4>
+                      <button type="button" class="btn-close btn-close-modal btn-close-white custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                          <i class="ti ti-x"></i>
+                      </button>
+                  </div>
+                  <form>
+                      <div class="modal-body">
+                          <!-- start row -->
+                          <div class="row">
+                              <div class="col-12">
+                                  <div class="mb-3">
+                                      <label class="form-label">Event Name</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="mb-3">
+                                      <label class="form-label">Event Date</label>
+                                      <div class="input-icon-end position-relative ngxdate1">
+                                          <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate1">
+                                          <span class="input-icon-addon">
+                      <i class="ti ti-calendar text-gray-7"></i>
+                    </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="mb-3">
+                                      <label class="form-label">Start Time</label>
+                                      <div class="input-icon-end position-relative">
+                                        <p-calendar class="form-control " placeholder="HH : MM" inputId="calendar-timeonly" [(ngModel)]="time"  [ngModelOptions]="{standalone: true}" [timeOnly]="true" />
+                                          <span class="input-icon-addon">
+                      <i class="ti ti-clock text-gray-7"></i>
+                    </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="mb-3">
+                                      <label class="form-label">End Time</label>
+                                      <div class="input-icon-end position-relative">
+                                        <p-calendar class="form-control " placeholder="HH : MM" inputId="calendar-timeonly" [(ngModel)]="time"  [ngModelOptions]="{standalone: true}" [timeOnly]="true" />
+                                          <span class="input-icon-addon">
+                      <i class="ti ti-clock text-gray-7"></i>
+                    </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="mb-3">
+                                      <label class="form-label">Event Location</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+                                  <div class="mb-0">
+                                      <label class="form-label">Descriptions</label>
+                                      <textarea class="form-control" rows="3"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- end row -->
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-md btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-md btn-primary">Add Event</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <!-- Add New Event End -->
+
+      <!-- Start Event -->
+      <div class="modal fade" id="event_modal">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header bg-dark modal-bg">
+                      <div class="modal-title text-white"><span id="eventTitle"></span></div>
+                      <button type="button" class="btn-close btn-close-modal btn-close-white custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+                          <i class="ti ti-x"></i>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-calendar-check text-default me-2"></i>26 Jul,2024 to 31 Jul,2024</p>
+                      <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-calendar-check text-default me-2"></i>11:00 AM to 12:15 PM</p>
+                      <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-map-pin-bolt text-default me-2"></i>Las Vegas, US</p>
+                      <p class="d-flex align-items-center fw-medium text-black mb-0"><i class="ti ti-calendar-check text-default me-2"></i>A recurring or repeating event is simply any event that you will occur more than once on your calendar.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- End Event -->
+
+
+      <!-- Add Category Modal -->
+<div class="modal fade" id="event_modal" aria-hidden="true" [ngClass]="{'show': showEventDetailsModal}" [ngStyle]="{'display': showEventDetailsModal ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark modal-bg">
+        <div class="modal-title text-white"><span id="eventTitle">{{eventDetails.title}}</span></div>
+        <button type="button" class="btn-close btn-close-modal btn-close-white custom-btn-close" data-bs-dismiss="modal" (click)="handleEventDetailsClose()" aria-label="Close">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-calendar-check text-default me-2"></i>26 Jul,2024 to 31 Jul,2024</p>
+        <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-calendar-check text-default me-2"></i>11:00 AM to 12:15 PM</p>
+        <p class="d-flex align-items-center fw-medium text-black mb-3"><i class="ti ti-map-pin-bolt text-default me-2"></i>Las Vegas, US</p>
+        <p class="d-flex align-items-center fw-medium text-black mb-0"><i class="ti ti-calendar-check text-default me-2"></i>A recurring or repeating event is simply any event that you will occur more than once on your calendar.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- /Add Category Modal -->
+
+  <ng-container *ngIf="showEventDetailsModal">
+    <div (click)="handleEventDetailsClose()" (keypress)="handleEventDetailsClose()" tabindex="1" class="modal-backdrop fade show"></div>
+  </ng-container>

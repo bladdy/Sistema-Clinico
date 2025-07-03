@@ -1,0 +1,67 @@
+ <!-- Page Header -->
+ <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+  <div class="flex-grow-1">
+      <h4 class="fs-18 fw-semibold mb-0">Data Tables</h4>
+  </div>
+  <div class="text-end">
+      <ol class="breadcrumb m-0 py-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+          <li class="breadcrumb-item active">Data Tables</li>
+      </ol>
+  </div>
+</div>
+<!-- End Page Header -->
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="content-page-header">
+    <h5>Default Datatable</h5>
+  </div>
+</div>
+<!-- /Page Header -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header card-buttons">
+        <h4 class="card-title">Default Datatable</h4>
+        <p class="card-text">
+          This is the most basic example of the datatables with zero configuration. Use the <code>.datatable</code>
+          class to initialize datatables.
+        </p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="table-scroll">
+            <table matSort (matSortChange)="sortData($event)" class="datatable table table-stripped">
+              <thead>
+                <tr>
+                  <th mat-sort-header="name">Name</th>
+                  <th mat-sort-header="position">Position</th>
+                  <th mat-sort-header="office">Office</th>
+                  <th mat-sort-header="age">Age</th>
+                  <th mat-sort-header="startDate">Start date</th>
+                  <th mat-sort-header="salary">Salary</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (data of tableData; track data) {
+                  <tr>
+                    <td>{{data.name}}</td>
+                    <td>{{data.position}}</td>
+                    <td>{{data.office}}</td>
+                    <td>{{data.age}}</td>
+                    <td>{{data.startDate}}</td>
+                    <td>{{data.salary}}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <app-custom-pagination></app-custom-pagination>
+      </div>
+    </div>
+  </div>
+</div>

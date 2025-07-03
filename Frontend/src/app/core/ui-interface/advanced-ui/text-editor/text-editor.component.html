@@ -1,0 +1,34 @@
+<!-- Page Header -->
+<div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+  <div class="flex-grow-1">
+      <h4 class="fs-18 fw-semibold mb-0">Text Editor</h4>
+  </div>
+
+  <div class="text-end">
+      <ol class="breadcrumb m-0 py-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Advanced UI</a></li>
+
+          <li class="breadcrumb-item active">Text Editor</li>
+      </ol>
+  </div>
+</div>
+<!-- /Page Header -->
+<div class="row">
+  <!-- Editor -->
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Editor</h5>
+      </div>
+      <div class="card-body editors">
+        <ngx-editor [editor]="editor">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+      </ngx-editor>
+      </div>
+    </div>
+  </div>
+  <!-- /Editor -->
+</div>

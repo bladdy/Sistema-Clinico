@@ -1,0 +1,185 @@
+
+                                <div class="card-header border-bottom px-0 mx-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h5 class="fw-bold">Signatures</h5>
+                                        <a href="javascript:void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_reason"><i class="ti ti-plus me-1"></i>New Signature</a>
+                                    </div>
+                                </div>
+                                <div class="card-body px-0 mx-3">
+                                    <!-- Table List -->
+                                    <div class="table-responsive border">
+                                        <table class="table table-nowrap">
+                                            <thead class="tablehead-light">
+                                                <tr>
+                                                    <th>Signature Name</th>
+                                                    <th>Signature</th>
+                                                    <th>Status</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <p class="mb-0 me-2">Samuel Donatte</p>
+                                                            <span class="badge badge-soft-primary border border-primary fw-medium">Default</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><img src="assets/img/icons/signature-01.svg" alt="img" class="img-fluid"></td>
+                                                    <td><span class="badge bg-soft-success fs-13 fw-medium text-success border border-success py-1 px-2">Active</span></td>
+                                                    <td class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown" class="btn p-1 btn-white border">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_reason">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_reason">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Michael Smith</td>
+                                                    <td><img src="assets/img/icons/signature-02.svg" alt="img" class="img-fluid"></td>
+                                                    <td><span class="badge bg-soft-success fs-13 fw-medium text-success border border-success py-1 px-2">Active</span></td>
+                                                    <td class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown" class="btn p-1 btn-white border">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_reason">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_reason">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alberto Alleo</td>
+                                                    <td><img src="assets/img/icons/signature-03.svg" alt="img" class="img-fluid"></td>
+                                                    <td><span class="badge bg-soft-success fs-13 fw-medium text-success border border-success py-1 px-2">Active</span></td>
+                                                    <td class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown" class="btn p-1 btn-white border">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_reason">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_reason">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ernesto Janetts</td>
+                                                    <td><img src="assets/img/icons/signature-04.svg" alt="img" class="img-fluid"></td>
+                                                    <td><span class="badge bg-soft-danger fs-13 fw-medium text-danger border border-danger py-1 px-2">Inactive</span></td>
+                                                    <td class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown" class="btn p-1 btn-white border">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_reason">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_reason">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /Table List -->
+                                </div>
+
+
+                                        <!-- Start Add Categories -->
+        <div id="add_reason" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="text-dark modal-title fw-bold">Add Signature</h5>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Signature Name<span class="text-danger ms-1">*</span></label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Signature Image<span class="text-danger ms-1">*</span></label>
+                                <input type="file" class="form-control">
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <label class="form-label">Make a default</label>
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input m-0" type="checkbox" checked="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add Signature</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Add Categories -->
+
+        <!-- Start Edit Categories -->
+        <div id="edit_reason" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="text-dark modal-title fw-bold">Edit Signature</h5>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Signature Name<span class="text-danger ms-1">*</span></label>
+                                <input type="text" class="form-control" value="Samuel Donatte">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Signature Image<span class="text-danger ms-1">*</span></label>
+                                <input type="file" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <label class="form-label">Make a default</label>
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input m-0" type="checkbox" checked="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <label class="form-label">Status</label>
+                                    <div class="form-check form-switch ps-0">
+                                        <input class="form-check-input m-0" type="checkbox" checked="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Edit Categories -->

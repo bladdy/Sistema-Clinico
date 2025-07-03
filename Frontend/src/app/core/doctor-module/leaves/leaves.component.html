@@ -1,0 +1,513 @@
+            <!-- Start Content -->
+            <div class="content">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3 mb-3 border-1 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0"> Leaves </h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                        <a href="javascript:void(0);" class="btn btn-primary ms-2 fs-13 btn-md" data-bs-toggle="modal" data-bs-target="#add-leave"><i class="ti ti-plus me-1"></i>Add New Leave</a>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <!-- Start Filter -->
+                <div class=" d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <div class="search-set mb-3">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <div class="table-search d-flex align-items-center mb-0">
+                                <div class="search-input">
+                                    <a href="javascript:void(0);" class="btn-searchset"><i class="isax isax-search-normal fs-12"></i></a>
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                    <label> 
+                                    <input type="search" [(ngModel)]="searchDataValue" [ngModelOptions]="{ standalone: true }" type="search" (ngModelChange)="searchData(searchDataValue)" class="form-control form-control-sm" placeholder="Search" aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex table-dropdown mb-3 pb-1 right-content align-items-center flex-wrap row-gap-3">
+                       <app-filter></app-filter>
+
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn bg-white btn-md d-inline-flex align-items-center fw-normal rounded border text-dark px-2 py-1 fs-14" data-bs-toggle="dropdown">
+                               <span  class="me-1"> Sort By : </span>  Recent
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Desending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last Month</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last 7 Days</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Filter -->
+
+                <!-- Start Table -->
+                <div class="table-responsive">
+                    <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="no-sort">
+                                    Date
+                                </th>
+                                <th mat-sort-header="leave">Leave Type</th>
+                                <th mat-sort-header="day">Day</th>
+                                <th mat-sort-header="date">Applied On</th>
+                                <th mat-sort-header="status">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>
+                                    {{data.date}}
+                                </td>
+                                <td>{{data.leaveType}}</td>
+                                <td>{{data.day}}</td>
+                                <td>{{data.appliedOn}}</td>
+                                <td> <span class="badge badge-info badge-sm border rounded"
+                                    [ngClass]="data.status==='Applied'?'text-info border-info':data.status==='Rejected'?'text-danger border-danger':'text-success border-success'"> {{data.status}} </span> </td>
+                                <td *ngIf="data.status==='Applied'" class="action-item"> <a href="" class="" data-bs-toggle="modal" data-bs-target="#cancel-leave"> <i class="ti ti-x"></i> </a> </td>
+                                <td *ngIf="data.status!=='Applied'" class="action-item">
+                                    <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu p-2">
+                                        <li>
+                                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit-leave">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_modal">Delete</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                           @if(tableData.length === 0){
+                                <tr>
+                                <td colspan="12" class="text-center text-dark">No matching records found</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End Table -->
+                <app-custom-pagination *ngIf="row"/>
+            </div>
+            <!-- End Content -->
+
+
+                <!-- Start Add leave -->
+    <div class="modal fade" id="add-leave">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark fw-bold">Add New Leave</h5>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">Leave Type<span class="text-danger">*</span></label>
+                                <div class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle form-control w-100 d-flex align-items-center justify-content-between" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                                        Select
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-lg p-2 dropdown-employee w-100">
+                                        <li>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control form-control" placeholder="Search">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Casual Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                    Sick Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Maternity Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Paternity Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Compensatory Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Emergency Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Bereavement Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Study/Exam Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Paid Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Unpaid Leave
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">From Date<span class="text-danger">*</span></label>
+                                <div class="input-group position-relative ngxdate">
+                                    <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate" placeholder="dd/mm/yyyy">
+                                    <span class="input-icon-addon">
+                                        <i class="ti ti-calendar text-body"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">To Date<span class="text-danger">*</span></label>
+                                <div class="input-group position-relative ngxdate1">
+                                    <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate1" placeholder="dd/mm/yyyy">
+                                    <span class="input-icon-addon">
+                                        <i class="ti ti-calendar text-body"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">No of Days<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <div class="row p-2 bg-light rounded align-items-center flex-wrap">
+                                    <div class="col-lg-6">
+                                        <label class="form-label mb-1 text-body fs-14 fw-medium">dd/mm/yyyy</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="form-label mb-1 text-dark fs-14 fw-medium">Leave Type<span class="text-danger">*</span></label>
+                                            <div class="dropdown">
+                                                <a href="javascript:void(0);" class="dropdown-toggle form-control w-100 d-flex align-items-center justify-content-between" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                                                    Select
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-lg p-2 dropdown-employee w-100">
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox">
+                                                            Applied
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                                Approved
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                                Rejected
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <div>
+                                    <label class="form-label mb-1 text-dark fs-14 fw-medium">Reason</label>
+                                    <textarea rows="4" class="form-control rounded" placeholder="Description"> </textarea>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-sm me-2 fs-13 fw-medium" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm fs-13 fw-medium">Add New Leave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Add New leave  -->
+
+    <!-- Start Cancel Modal -->
+    <div class="modal fade" id="cancel-leave">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark fw-bold">Cancel Reason</h5>
+                    <button type="button" class="btn-close opacity-100" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div>
+                            <label class="form-label mb-1 text-dark fs-14 fw-medium">Reason</label>
+                            <textarea rows="4" class="form-control rounded" placeholder="Description"> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-sm me-2 fs-13 fw-medium" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm fs-13 fw-medium">Cancel Leave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Cancel Modal  -->
+
+    <!-- Start Add leave -->
+    <div class="modal fade" id="edit-leave">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark fw-bold">Edit New Leave</h5>
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">Leave Type<span class="text-danger">*</span></label>
+                                <div class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle form-control w-100 d-flex align-items-center justify-content-between" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                                        Casual Leave
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-lg p-2 dropdown-employee w-100">
+                                        <li>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control form-control" placeholder="Search">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Casual Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                    Sick Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Maternity Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Paternity Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Compensatory Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Emergency Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Bereavement Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                Study/Exam Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Paid Leave
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                <input class="form-check-input m-0 me-2" type="checkbox">
+                                                Unpaid Leave
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">From Date<span class="text-danger">*</span></label>
+                                <div class="input-group position-relative ngxdate2">
+                                    <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate2" placeholder="20/09/2025">
+                                    <span class="input-icon-addon">
+                                        <i class="ti ti-calendar text-body"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">To Date<span class="text-danger">*</span></label>
+                                <div class="input-group position-relative ngxdate3">
+                                    <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate3" placeholder="20/10/2025">
+                                    <span class="input-icon-addon">
+                                        <i class="ti ti-calendar text-body"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label mb-1 text-dark fs-14 fw-medium">No of Days<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="30">
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <div class="row p-2 bg-light rounded align-items-center flex-wrap">
+                                    <div class="col-lg-6">
+                                        <label class="form-label mb-1 text-body fs-14 fw-medium">dd/mm/yyyy</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="form-label mb-1 text-dark fs-14 fw-medium">Leave Type<span class="text-danger">*</span></label>
+                                            <div class="dropdown">
+                                                <a href="javascript:void(0);" class="dropdown-toggle form-control w-100 d-flex align-items-center justify-content-between" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                                                    Applied
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-lg p-2 dropdown-employee w-100">
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox">
+                                                            Applied
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                                Approved
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item px-2 d-flex align-items-center rounded-1">
+                                                            <input class="form-check-input m-0 me-2" type="checkbox" checked>
+                                                                Rejected
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <div>
+                                    <label class="form-label mb-1 text-dark fs-14 fw-medium">Reason</label>
+                                    <textarea rows="4" class="form-control rounded" placeholder="Description"> </textarea>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light btn-sm me-2 fs-13 fw-medium" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm fs-13 fw-medium">Edit Leave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Add New leave  -->

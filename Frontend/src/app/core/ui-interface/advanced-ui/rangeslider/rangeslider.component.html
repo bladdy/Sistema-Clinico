@@ -1,0 +1,88 @@
+
+<!-- Page Header -->
+
+              <!-- Page Header -->
+              <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+                <div class="flex-grow-1">
+                    <h4 class="fs-18 fw-semibold mb-0">Range Slider</h4>
+                </div>
+                <div class="text-end">
+                    <ol class="breadcrumb m-0 py-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Advanced UI</a></li>
+                        <li class="breadcrumb-item active">Range Slider</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- End Page Header -->	
+<!-- /Page Header -->	
+<div class="row">
+  <!-- Rangeslider -->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Default</h5>
+      </div>
+      <div class="card-body">
+        <mat-slider min="0" max="100" step="10"  discrete [displayWith]="formatLabel">
+          <input matSliderThumb>
+        </mat-slider>
+        
+      </div>
+    </div>
+  </div>
+  <!-- /Rangeslider -->
+
+  <!-- Rangeslider -->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Min-Max</h5>
+      </div>
+      <div class="card-body">
+        <mat-slider min="200" max="500"  discrete [displayWith]="formatLabel">
+          <input value="300" matSliderThumb>
+        </mat-slider>
+      </div>
+    </div>
+  </div>
+  <!-- /Rangeslider -->
+
+
+  <!-- Rangeslider -->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Range</h5>
+      </div>
+      <div class="card-body">
+        <mat-slider min="200" max="500"  discrete [displayWith]="formatLabel">
+          <input value="300" matSliderStartThumb>
+          <input value="400" matSliderEndThumb>
+        </mat-slider>
+      </div>
+    </div>
+  </div>
+  <!-- /Rangeslider -->
+
+
+  <!-- Rangeslider -->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Custom Values</h5>
+      </div>
+      <div class="card-body">
+        <div class="custom-slider">
+          <mat-slider min="1" max="12" step="1"  discrete [displayWith]="formatLabel1">
+            <input matSliderThumb>
+          </mat-slider>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Rangeslider -->
+
+
+ 
+</div>

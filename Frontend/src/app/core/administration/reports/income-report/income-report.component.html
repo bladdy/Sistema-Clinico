@@ -1,0 +1,197 @@
+            <!-- Start Content -->
+            <div class="content">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 mb-3 pb-3 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0">Income Report</h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <!-- row start -->
+                <div class="row">
+
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">
+                         <div class="card shadow-sm flex-fill w-100">
+                             <div class="card-body">
+                                 <div class="d-flex justify-content-between mb-2">
+                                     <div>
+                                         <p class="mb-1 text-truncate">Total Clinic Income</p>
+                                         <h6 class="mb-0 fw-bold">$18,750</h6>
+                                     </div>
+                                     <span class="avatar avatar-lg bg-soft-primary text-primary rounded-circle flex-shrink-0"><i class="ti ti-currency-dollar fs-24"></i></span>
+                                 </div>
+                                 <div class="progress mb-2 progress-sm">
+                                     <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                 </div>
+                                 <p class="mb-0 fs-13"><span class="text-success"><i class="ti ti-arrow-up-right me-1"></i>5.62%</span> from last month</p>
+                             </div>
+                         </div>
+                    </div>
+                    <!-- col end -->
+ 
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">
+                         <div class="card shadow-sm flex-fill w-100">
+                             <div class="card-body">
+                                 <div class="d-flex justify-content-between mb-2">
+                                     <div>
+                                         <p class="mb-1 text-truncate">Doctor Fees Collected</p>
+                                         <h6 class="mb-0 fw-bold">$7,000</h6>
+                                     </div>
+                                     <span class="avatar avatar-lg bg-soft-success text-success rounded-circle flex-shrink-0"><i class="ti ti-stethoscope fs-24"></i></span>
+                                 </div>
+                                 <div class="progress mb-2 progress-sm">
+                                     <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                 </div>
+                                 <p class="mb-0 fs-13"><span class="text-success"><i class="ti ti-arrow-up-right me-1"></i>11.4%</span> from last month</p>
+                             </div>
+                         </div>
+                    </div>
+                    <!-- col end -->
+ 
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">
+                         <div class="card shadow-sm flex-fill w-100">
+                             <div class="card-body">
+                                 <div class="d-flex justify-content-between mb-2">
+                                     <div>
+                                         <p class="mb-1 text-truncate">Medicine Sales</p>
+                                         <h6 class="mb-0 fw-bold">$6,250</h6>
+                                     </div>
+                                     <span class="avatar avatar-lg bg-soft-warning text-warning rounded-circle flex-shrink-0"><i class="ti ti-pill fs-24"></i></span>
+                                 </div>
+                                 <div class="progress mb-2 progress-sm">
+                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                 </div>
+                                 <p class="mb-0 fs-13"><span class="text-success"><i class="ti ti-arrow-up-right me-1"></i>8.52%</span> from last month</p>
+                             </div>
+                         </div>
+                    </div>
+                    <!-- col end -->
+ 
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">
+                         <div class="card shadow-sm flex-fill w-100">
+                             <div class="card-body">
+                                 <div class="d-flex justify-content-between mb-2">
+                                     <div>
+                                         <p class="mb-1 text-truncate">Lab Revenue</p>
+                                         <h6 class="mb-0 fw-bold">$5,500</h6>
+                                     </div>
+                                     <span class="avatar avatar-lg bg-soft-danger text-danger rounded-circle flex-shrink-0"><i class="ti ti-flask fs-24"></i></span>
+                                 </div>
+                                 <div class="progress mb-2 progress-sm">
+                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                 </div>
+                                 <p class="mb-0 fs-13"><span class="text-danger"><i class="ti ti-arrow-down-right me-1"></i>7.45%</span> from last month</p>
+                             </div>
+                         </div>
+                    </div>
+                    <!-- col end -->
+ 
+                 </div>     
+                 <!-- row end -->
+
+                 <div class="card">
+                    <div class="card-body">
+
+                        <!-- start row -->
+                         <div class="row row-gap-2">
+                            <div class="col-md-6">
+                                <div class="mb-0">
+                                    <label class="form-label">Date</label>
+                                    <div class="input-group position-relative">
+                                        <input type="text" class="form-control date-range bookingrange rounded-end bg-white" bsDaterangepicker [(ngModel)]="bsRangeValue" name="time" [bsConfig]="{ adaptivePosition: true }" placeholder="20 Apr 25 - 20 Apr 25">
+                                        <span class="input-icon-addon fs-14 text-dark">
+                                            <i class="ti ti-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-6">
+                                <div class="mb-0">
+                                    <label class="form-label">Received From</label>
+                                    <mat-select class="custom-mat-select select" placeholder="Select">
+                                        <mat-option value="1">Select</mat-option>
+                                        <mat-option value="1">Alberto Ripley</mat-option>
+                                        <mat-option value="1">Susan Babin</mat-option>
+                                        <mat-option value="1">Martin Lisa</mat-option>
+                                        <mat-option value="1">Stella Mary</mat-option>
+                                        <mat-option value="1">Carol Lam</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-6">
+                                <div class="mb-0">
+                                    <label class="form-label">Payment Method</label>
+                                    <tag-input [ngModelOptions]="{standalone: true}" [(ngModel)]="tags1" [placeholder]="'Add new'"></tag-input>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-6">
+                                <div class="mb-0">
+                                    <label class="form-label">Status</label>
+                                    <tag-input [ngModelOptions]="{standalone: true}" [(ngModel)]="tags" [placeholder]="'Add new'"></tag-input>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <a href="javascript:void(0);" class="btn btn-dark"><i class="ti ti-player-play me-1"></i>Run Report</a>
+                                </div>
+                            </div><!-- end col -->
+                         </div>
+                        <!-- end row -->
+
+                    </div><!-- end card body -->
+                 </div><!-- end card -->
+
+                <div class="table-responsive">
+                   <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Income</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Received From</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>{{data.income}}</td>
+                                <td><p class="text-dark fw-medium">{{data.amount}}</p></td>
+                                <td>{{data.date}}</td>
+                                <td><p class="text-dark fw-medium">{{data.receivedFrom}}</p></td>
+                                <td>{{data.paymentMethod}}</td>
+                                <td><span class="badge px-2 py-1 fs-13 fw-medium"
+                                    [ngClass]="data.status==='Pending'?'badge-soft-warning border border-warning':'badge-soft-success border border-success'">{{data.status}}</span></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                                
+            </div>
+            <!-- End Content -->
+
+

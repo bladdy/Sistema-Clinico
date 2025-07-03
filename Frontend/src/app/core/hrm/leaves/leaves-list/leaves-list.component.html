@@ -1,0 +1,474 @@
+
+            <!-- Start Content -->
+            <div class="content">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 mb-3 pb-3 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0">Admin Leaves</h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <a href="javascript:void(0);" class="btn btn-primary ms-2 fs-13 btn-md" data-bs-toggle="modal" data-bs-target="#add_leave"><i class="ti ti-plus me-1"></i>New Leave</a>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <!-- start row -->
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body position-relative">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p>Total Present</p>
+                                        <div class="d-flex align-items-center">
+                                            <p class="mb-0 me-2"><span class="text-dark fw-bold">180</span></p>
+                                            <span class="badge badge-soft-success fs-12 fw-normal">+10.6%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="p-2 bg-soft-primary border border-primary rounded-circle d-inline-flex align-items-center justify-content-center text-primary position-relative z-1"><i class="ti ti-user-check"></i></span>
+                                </div>
+                                <img src="assets/img/bg/attendance-bg-01.png" alt="" class="img-fluid position-absolute bottom-0 end-0">
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body position-relative">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p>Planned Leaves</p>
+                                        <div class="d-flex align-items-center">
+                                            <p class="mb-0 me-2"><span class="text-dark fw-bold">10</span></p>
+                                            <span class="badge badge-soft-success fs-12 fw-normal">+8.95%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="p-2 bg-soft-success border border-success rounded-circle d-inline-flex align-items-center justify-content-center text-success position-relative z-1"><i class="ti ti-user-x"></i></span>
+                                </div>
+                                <img src="assets/img/bg/attendance-bg-02.png" alt="" class="img-fluid position-absolute bottom-0 end-0">
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body position-relative">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p>Unplanned Leaves</p>
+                                        <div class="d-flex align-items-center">
+                                            <p class="mb-0 me-2"><span class="text-dark fw-bold">50</span></p>
+                                            <span class="badge badge-soft-success fs-12 fw-normal">+3.78%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="p-2 bg-soft-warning border border-warning rounded-circle d-inline-flex align-items-center justify-content-center text-warning position-relative z-1"><i class="ti ti-user-exclamation"></i></span>
+                                </div>
+                                <img src="assets/img/bg/attendance-bg-03.png" alt="" class="img-fluid position-absolute bottom-0 end-0">
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body position-relative">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p>Pending Requests</p>
+                                        <div class="d-flex align-items-center">
+                                            <p class="mb-0 me-2"><span class="text-dark fw-bold">15</span></p>
+                                            <span class="badge badge-soft-success fs-12 fw-normal">+7.65%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="p-2 bg-soft-danger border border-danger rounded-circle d-inline-flex align-items-center justify-content-center text-danger position-relative z-1"><i class="ti ti-user-question"></i></span>
+                                </div>
+                                <img src="assets/img/bg/attendance-bg-04.png" alt="" class="img-fluid position-absolute bottom-0 end-0">
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class=" d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <div class="search-set mb-3">
+                        <div class="d-flex align-items-center">
+                            <div class="table-search d-flex align-items-center mb-0 me-2">
+                                <div class="search-input">
+                                    <a href="javascript:void(0);" class="btn-searchset"></a>
+                                </div>
+                            </div>
+                            <div class="d-flex right-content align-items-center flex-wrap">
+                                <app-date-range-picker></app-date-range-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex table-dropdown mb-3 pb-1 right-content align-items-center flex-wrap row-gap-3">
+                        <div class="dropdown me-2">
+                            <a href="javascript:void(0);" class="bg-white border rounded btn btn-md text-dark fs-14 py-1 align-items-center d-flex fw-normal" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                <i class="ti ti-filter text-gray-5 me-1"></i>Filters
+                            </a>
+                            <div class="dropdown-menu dropdown-lg dropdown-menu-end filter-dropdown p-0" id="filter-dropdown">
+                                <div class="d-flex align-items-center justify-content-between border-bottom filter-header">
+                                    <h4 class="mb-0 fw-bold">Filter</h4>
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0);" class="link-danger text-decoration-underline">Clear All</a>
+                                    </div>
+                                </div>
+                                <form >
+                                    <div class="filter-body pb-0">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <label class="form-label mb-1">Employee</label>
+                                                <a href="javascript:void(0);" class="link-primary mb-1">Reset</a>
+                                            </div>
+                                            <div class="custom-multiselect">
+                                                <p-multiselect [options]="doctor" [(ngModel)]="selectedDoctors" [ngModelOptions]="{standalone:true}" optionLabel="data" display="chip" styleClass="w-full md:w-80"  />
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <label class="form-label">Leave Type</label>
+                                                <a href="javascript:void(0);" class="link-primary mb-1">Reset</a>
+                                            </div>
+                                            <div class="custom-multiselect">
+                                                <p-multiselect [options]="designation" [(ngModel)]="selectedDesignation" [ngModelOptions]="{standalone:true}" optionLabel="data" display="chip" styleClass="w-full md:w-80"  />
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label mb-1 text-dark fs-14 fw-medium">Date<span class="text-danger">*</span></label>
+                                            <div class="input-icon-end position-relative ngxdate100">  
+                                                <input type="text" class="form-control datetimepicker" bsDatepicker container=".ngxdate100" placement="top" placeholder="dd/mm/yyyy">
+                                                <span class="input-icon-addon">
+                                                    <i class="ti ti-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <label class="form-label">Status</label>
+                                                <a href="javascript:void(0);" class="link-primary mb-1">Reset</a>
+                                            </div>
+                                            <div class="custom-multiselect">
+                                                <p-multiselect [options]="status" [(ngModel)]="selectedStatus" [ngModelOptions]="{standalone:true}" optionLabel="data" display="chip" styleClass="w-full md:w-80"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="filter-footer d-flex align-items-center justify-content-end border-top">
+                                        <a href="javascript:void(0);" class="btn btn-light btn-md me-2 fw-medium" id="close-filter">Close</a>
+                                        <button type="submit" class="btn btn-primary btn-md fw-medium">Filter</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                      
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn bg-white btn-md d-inline-flex align-items-center fw-normal rounded border text-dark px-2 py-1 fs-14" data-bs-toggle="dropdown">
+                               <span  class="me-1"> Sort By : </span>  Recent
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recent</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Oldest</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                   <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th mat-sort-header="id">ID</th>
+                                <th mat-sort-header="emp">Employee</th>
+                                <th mat-sort-header="type">Leave Type</th>
+                                <th mat-sort-header="date">Date</th>
+                                <th mat-sort-header="day">Day</th>
+                                <th mat-sort-header="appliedon">Applied On</th>
+                                <th mat-sort-header="status">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>{{data.id}}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0);" class="avatar me-2" data-bs-toggle="modal" data-bs-target="#view_staff">
+                                            <img src="assets/img/users/{{data.image}}" alt="Doctor" class="rounded-circle">
+                                        </a>
+                                        <div>
+                                            <h6 class="mb-0 fs-14 fw-semibold"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_staff">{{data.employee}}</a></h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{data.leaveType}}</td>
+                                <td>{{data.date}}</td>
+                                <td>{{data.day}}</td>
+                                <td>{{data.appliedOn}}</td>
+                               <td>
+                                    <span class="badge border px-2 py-1 fs-13 fw-medium"
+                                    [ngClass]="data.status==='Approved'?'badge-soft-success border-success':'badge-soft-danger border-danger'">{{data.status}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-item p-2">
+                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                            <i class="ti ti-dots-vertical"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_leave">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_leave">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        } @if(tableData.length === 0){
+                <tr>
+                  <td colspan="12" class="text-center text-dark">No matching records found</td>
+                </tr>
+              }
+                        </tbody>
+                    </table>
+                </div>
+                  <app-custom-pagination></app-custom-pagination>              
+            </div>
+            <!-- End Content -->
+
+
+                 <!-- Start Add Modal -->
+        <div id="add_leave" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="text-dark modal-title fw-bold">Add New Leave</h4>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <!-- start row -->
+                             <div class="row row-gap-2">
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Employee<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">James Adair</mat-option>
+                                            <mat-option value="1">Adam Milne</mat-option>
+                                            <mat-option value="1">Richard Clark</mat-option>
+                                            <mat-option value="1">Robert Reid</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Leave Type<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Sick Leave</mat-option>
+                                            <mat-option value="1">Casual Leave</mat-option>
+                                            <mat-option value="1">Emergency</mat-option>
+                                            <mat-option value="1">Vacation</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">From Date<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate3">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" bsDatepicker container=".ngxdate3">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">To Date<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate2">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" bsDatepicker container=".ngxdate2">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">No of Days<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="p-2 bg-light rounded">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <span>dd/mm/yyyy</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-select class="custom-mat-select select" placeholder="Select">
+                                                    <mat-option value="1">Select</mat-option>
+                                                    <mat-option value="1">Full Day</mat-option>
+                                                    <mat-option value="1">Half Day</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">No of Days<span class="text-danger ms-1">*</span></label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div><!-- end col -->
+                             </div>
+                             <!-- end row -->
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add New Leave</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Add Modal -->
+
+        <!-- Start Add Modal -->
+        <div id="edit_leave" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="text-dark modal-title fw-bold">Edit Leave</h4>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <!-- start row -->
+                             <div class="row row-gap-2">
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Employee<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="James Adair">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">James Adair</mat-option>
+                                            <mat-option value="1">Adam Milne</mat-option>
+                                            <mat-option value="1">Richard Clark</mat-option>
+                                            <mat-option value="1">Robert Reid</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Leave Type<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Sick Leave">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Sick Leave</mat-option>
+                                            <mat-option value="1">Casual Leave</mat-option>
+                                            <mat-option value="1">Emergency</mat-option>
+                                            <mat-option value="1">Vacation</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">From Date<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" bsDatepicker container=".ngxdate">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">To Date<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate1">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" bsDatepicker container=".ngxdate1">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">No of Days<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control" value="2">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="p-2 bg-light rounded">
+                                        <div class="row align-items-center mb-2">
+                                            <div class="col-md-6">
+                                                <span>18 Jan 2025</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-select class="custom-mat-select select" placeholder="Full Day">
+                                                    <mat-option value="1">Select</mat-option>
+                                                    <mat-option value="1">Full Day</mat-option>
+                                                    <mat-option value="1">Half Day</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <span>18 Jan 2025</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-select class="custom-mat-select select" placeholder="Full Day">
+                                                    <mat-option value="1">Select</mat-option>
+                                                    <mat-option value="1">Full Day</mat-option>
+                                                    <mat-option value="1">Half Day</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">No of Days<span class="text-danger ms-1">*</span></label>
+                                        <textarea class="form-control" rows="3">Not feeling well due to cold and fatigue, taking rest as advised by family doctor.</textarea>
+                                    </div>
+                                </div><!-- end col -->
+                             </div>
+                             <!-- end row -->
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Add Modal -->
+
+        <!-- Start Delete Modal  -->
+        <div class="modal fade" id="delete_leave">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body text-center position-relative z-1">
+                        <img src="assets/img/bg/delete-modal-bg-01.png" alt="" class="img-fluid position-absolute top-0 start-0 z-n1">
+                        <img src="assets/img/bg/delete-modal-bg-02.png" alt="" class="img-fluid position-absolute bottom-0 end-0 z-n1">
+                        <div class="mb-3">
+                            <span class="avatar avatar-lg bg-danger text-white"><i class="ti ti-trash fs-24"></i></span>
+                        </div>
+                        <h5 class="fw-bold mb-1">Delete Confirmation</h5>
+                        <p class="mb-3">Are you sure want to delete?</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="javascript:void(0);" class="btn btn-light position-relative z-1 me-3" data-bs-dismiss="modal">Cancel</a>
+                            <a href="javascript:void(0);" class="btn btn-danger position-relative z-1">Yes, Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Delete Modal  -->

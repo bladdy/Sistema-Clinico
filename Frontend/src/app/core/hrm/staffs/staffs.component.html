@@ -1,0 +1,734 @@
+       <!-- Start Content -->
+            <div class="content"  id="profilePage">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 mb-3 pb-3 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0"> Staff<span class="badge badge-soft-primary border border-primary fs-13 fw-medium ms-2">Total Staffs : 565</span></h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                        <a href="javascript:void(0);" class="btn btn-primary ms-2 fs-13 btn-md" data-bs-toggle="modal" data-bs-target="#add_staff"><i class="ti ti-plus me-1"></i>Add Staff</a>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <div class=" d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <div class="search-set mb-3">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <div class="table-search d-flex align-items-center mb-0">
+                                <div class="search-input">
+                    <a href="javascript:void(0);" class="btn-searchset"><i class="isax isax-search-normal fs-12"></i></a>
+                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                      <label> 
+                      <input type="search" [(ngModel)]="searchDataValue" [ngModelOptions]="{ standalone: true }" type="search" (ngModelChange)="searchData(searchDataValue)" class="form-control form-control-sm" placeholder="Search" aria-controls="DataTables_Table_0">
+                    </label>
+                  </div>
+                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex table-dropdown mb-3 pb-1 right-content align-items-center flex-wrap row-gap-3">
+                        <app-filter></app-filter>
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn bg-white btn-md d-inline-flex align-items-center fw-normal rounded border text-dark px-2 py-1 fs-14" data-bs-toggle="dropdown">
+                               <span  class="me-1"> Sort By : </span>  Recent
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recent</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Oldest</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                   <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th mat-sort-header="staff">Staff</th>
+                                <th mat-sort-header="designation">Designation</th>
+                                <th mat-sort-header="role">Role</th>
+                                <th mat-sort-header="phone">Phone</th>
+                                <th mat-sort-header="email">Email</th>
+                                <th mat-sort-header="status">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0);" class="avatar me-2" data-bs-toggle="modal" data-bs-target="#view_staff">
+                                            <img src="assets/img/users/{{data.img}}" alt="Doctor" class="rounded-circle">
+                                        </a>
+                                        <div>
+                                            <h6 class="mb-1 fs-14 fw-semibold"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_staff">{{data.name}}</a></h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{data.designation}}</td>
+                                <td>{{data.role}}</td>
+                                <td>{{data.phone}}</td>
+                                <td>{{data.email}}</td>
+                                <td><span class="badge border "
+                                    [ngClass]="data.status==='Available'?'badge-soft-success border-success':'badge-soft-danger border-danger'">{{data.status}}</span></td>
+                                <td>
+                                    <div class="action-item">
+                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                            <i class="ti ti-dots-vertical"></i>
+                                        </a>
+                                        <ul class="dropdown-menu p-2">
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#view_staff">View Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit_staff">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_staff">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }@if(tableData.length === 0){
+                            <tr>
+                            <td colspan="12" class="text-center text-dark">No matching records found</td>
+                            </tr>
+                        }     
+                     </tbody>
+                    </table>
+                </div>
+                    <app-custom-pagination *ngIf="row"></app-custom-pagination>              
+            </div>
+            <!-- End Content -->
+
+
+
+                    <!-- Start Add Modal -->
+        <div id="view_staff" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="fw-bold modal-title">Staff Details</h5>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-2">
+                                        <img src="assets/img/users/user-08.jpg" alt="img" class="img-fluid avatar avatar-xxl rounded">
+                                    </div>
+                                    <div>
+                                        <span class="text-primary mb-1">#STF020</span>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <h5 class="fw-bold mb-0 me-2">James Allaire</h5>
+                                            <span class="badge badge-soft-success border border-success fw-medium fs-13">Available</span>
+                                        </div>
+                                        <p>Front Office Executive</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end card -->
+
+                        <ul class="nav nav-tabs nav-bordered mb-3">
+                            <li class="nav-item"><a class="nav-link active" href="javascript:void(0);" data-bs-toggle="tab" data-bs-target="#tab1">Basic Info</a></li>
+                            <li class="nav-item"><a class="nav-link" href="javascript:void(0);" data-bs-toggle="tab" data-bs-target="#tab2">Salary Info</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1" role="tabpanel" tabindex="0">
+
+                                <!-- start row -->
+                                <div class="row row-gap-2">
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Gender</p>
+                                        <p class="fs-13">Male</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Phone Number</p>
+                                        <p class="fs-13">+1 54546 45648</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Email</p>
+                                        <p class="fs-13">james&#64;example.com</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Date of Joining</p>
+                                        <p class="fs-13">12 Dec 2024</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Email</p>
+                                        <p class="fs-13">james&#64;example.com</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-4">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Staff Type </p>
+                                        <p class="fs-13">Permanent</p>
+                                    </div><!-- end col -->
+                                    <div class="col-md-12">
+                                        <p class="text-dark fs-13 fw-medium mb-0">Addresss</p>
+                                        <p class="fs-13">10 Elizabethtown Plaza, Downers Grove, Elizabeth UK07202 </p>
+                                    </div><!-- end col -->
+                                </div>
+                                <!-- end row -->
+
+                            </div>
+                            <div class="tab-pane" id="tab2" role="tabpanel" tabindex="0">
+                                <!-- Table List -->
+                                <div class="table-responsive border bg-white">
+                                    <table class="table table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Credit Date</th>
+                                                <th>Amount</th>
+                                                <th>Salary for</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>13 Jul 2025</td>
+                                                <td>$4800</td>
+                                                <td>Jun 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>12 Jun 2025</td>
+                                                <td>$4800</td>
+                                                <td>May 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>15 May 2025</td>
+                                                <td>$4800</td>
+                                                <td>Apr 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>14 Apr 2025</td>
+                                                <td>$4800</td>
+                                                <td>Mar 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>13 Mar 2025</td>
+                                                <td>$4800</td>
+                                                <td>Feb 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>14 Feb 2025</td>
+                                                <td>$4800</td>
+                                                <td>Jan 2025</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>12 Jan 2025</td>
+                                                <td>$4800</td>
+                                                <td>Dec 2024</td>
+                                                <td>
+                                                    <div class="action-item">
+                                                        <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                            <i class="ti ti-dots-vertical"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu p-2">
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edit">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete">Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /Table List -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Add Modal -->
+
+        <!-- Start Add Modal -->
+        <div id="add_staff" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="fw-bold modal-title">New Staff</h5>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <h6 class="fw-bold mb-3">Staff Information</h6>
+                            <div class="mb-3 d-flex align-items-center">
+                                <label class="form-label">Profile Image</label>
+                                <div class="drag-upload-btn avatar avatar-xxl rounded-circle bg-light text-muted position-relative overflow-hidden z-1 mb-2 ms-4 p-0">
+                                    <i class="ti ti-user-plus fs-16"></i>
+                                    <input type="file" class="form-control image-sign" multiple="">
+                                    <div class="position-absolute bottom-0 end-0 star-0 w-100 h-25 bg-dark d-flex align-items-center justify-content-center z-n1">
+                                        <a href="javascript:void(0);" class="text-white d-flex align-items-center justify-content-center">
+                                            <i class="ti ti-photo fs-14"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <!-- start row -->
+                            <div class="row mb-3 border-bottom">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Role<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Admin</mat-option>
+                                            <mat-option value="1">Reception</mat-option>
+                                            <mat-option value="1">Nurse</mat-option>
+                                            <mat-option value="1">Nurse Practitioner</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Designation<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Admin Officer</mat-option>
+                                            <mat-option value="1">Front Officer </mat-option>
+                                            <mat-option value="1">Medical Recorder</mat-option>
+                                            <mat-option value="1">Billing Executive</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                            </div>
+                            <!-- end row -->
+
+                            <h6 class="fw-bold mb-3">Contact Information</h6>
+
+                            <!-- start row -->
+                             <div class="row row-gap-2">
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Phone Number<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Email<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">DOB<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate1">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy" bsDatepicker container=".ngxdate1">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Gender<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Male</mat-option>
+                                            <mat-option value="1">Female</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">Blood Group<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">O+</mat-option>
+                                            <mat-option value="1">O-</mat-option>
+                                            <mat-option value="1">A+</mat-option>
+                                            <mat-option value="1">A-</mat-option>
+                                            <mat-option value="1">B+</mat-option>
+                                            <mat-option value="1">B-</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Address 1</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Address 2</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Country</label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">USA</mat-option>
+                                            <mat-option value="1">Canada</mat-option>
+                                            <mat-option value="1">UK</mat-option>
+                                            <mat-option value="1">Germany</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">State</label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">California</mat-option>
+                                            <mat-option value="1">Ontario</mat-option>
+                                            <mat-option value="1">England</mat-option>
+                                            <mat-option value="1">Bavaria</mat-option>
+                                       </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">City</label>
+                                        <mat-select class="custom-mat-select select" placeholder="Select">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Los Angeles</mat-option>
+                                            <mat-option value="1">Toronto</mat-option>
+                                            <mat-option value="1">London</mat-option>
+                                            <mat-option value="1">Munich</mat-option>
+                                       </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Pincode</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div><!-- end col -->
+                             </div>
+                             <!-- end row -->
+
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add Staff</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Add Modal -->
+
+        <!-- Start Edit Modal -->
+        <div id="edit_staff" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="fw-bold modal-title">Edit Staff</h5>
+                        <button type="button" class="btn-close btn-close-modal custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <h6 class="fw-bold mb-3">Staff Information</h6>
+                            <div class="mb-3 d-flex align-items-center">
+                                <label class="form-label me-3">Profile Image</label>
+                                <div class="profile-container">
+                                    <img src="assets/img/users/user-08.jpg" alt="Profile">
+                                    <div class="overlay-btn">
+                                      <a href="javascript:void(0);" class="text-white" id="uploadTrigger">
+                                        <i class="ti ti-photo fs-10"></i>
+                                      </a>
+                                    </div>
+                                    <input type="file" id="profileUpload" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" value="James Adair">
+                            </div>
+
+                            <!-- start row -->
+                            <div class="row mb-3 border-bottom">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Role<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Admin">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Admin</mat-option>
+                                            <mat-option value="1">Reception</mat-option>
+                                            <mat-option value="1">Nurse</mat-option>
+                                            <mat-option value="1">Nurse Practitioner</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Designation<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Admin Officer">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Admin Officer</mat-option>
+                                            <mat-option value="1">Front Officer </mat-option>
+                                            <mat-option value="1">Medical Recorder</mat-option>
+                                            <mat-option value="1">Billing Executive</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                            </div>
+                            <!-- end row -->
+
+                            <h6 class="fw-bold mb-3">Contact Information</h6>
+
+                            <!-- start row -->
+                             <div class="row row-gap-2">
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Phone Number<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control" value="+1 5258 25874">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Email<span class="text-danger ms-1">*</span></label>
+                                        <input type="text" class="form-control" value="james@gmail.com">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">DOB<span class="text-danger ms-1">*</span></label>
+                                        <div class="input-icon-end position-relative ngxdate2">  
+                                            <input type="text" class="form-control datetimepicker" placeholder="03/02/1999" bsDatepicker container=".ngxdate2">
+                                            <span class="input-icon-addon">
+                                                <i class="ti ti-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Gender<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="Male">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Male</mat-option>
+                                            <mat-option value="1">Female</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-12">
+                                    <div class="mb-0">
+                                        <label class="form-label">Blood Group<span class="text-danger ms-1">*</span></label>
+                                        <mat-select class="custom-mat-select select" placeholder="O+">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">O+</mat-option>
+                                            <mat-option value="1">O-</mat-option>
+                                            <mat-option value="1">A+</mat-option>
+                                            <mat-option value="1">A-</mat-option>
+                                            <mat-option value="1">B+</mat-option>
+                                            <mat-option value="1">B-</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Address 1</label>
+                                        <input type="text" class="form-control" value="3-174,">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Address 2</label>
+                                        <input type="text" class="form-control" value="3-/174,">
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Country</label>
+                                        <mat-select class="custom-mat-select select" placeholder="USA">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">USA</mat-option>
+                                            <mat-option value="1">Canada</mat-option>
+                                            <mat-option value="1">UK</mat-option>
+                                            <mat-option value="1">Germany</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">State</label>
+                                        <mat-select class="custom-mat-select select" placeholder="California">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">California</mat-option>
+                                            <mat-option value="1">Ontario</mat-option>
+                                            <mat-option value="1">England</mat-option>
+                                            <mat-option value="1">Bavaria</mat-option>
+                                       </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">City</label>
+                                        <mat-select class="custom-mat-select select" placeholder="Los Angeles">
+                                            <mat-option value="1">Select</mat-option>
+                                            <mat-option value="1">Los Angeles</mat-option>
+                                            <mat-option value="1">Toronto</mat-option>
+                                            <mat-option value="1">London</mat-option>
+                                            <mat-option value="1">Munich</mat-option>
+                                       </mat-select>
+                                    </div>
+                                </div><!-- end col -->
+                                <div class="col-md-6">
+                                    <div class="mb-0">
+                                        <label class="form-label">Pincode</label>
+                                        <input type="text" class="form-control" value="IN 46625">
+                                    </div>
+                                </div><!-- end col -->
+                             </div>
+                             <!-- end row -->
+
+                        </div>
+                        <div class="modal-footer d-flex align-items-center gap-1">
+                            <button type="button" class="btn btn-white border" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Edit Modal -->
+
+        <!-- Start Delete Modal  -->
+        <div class="modal fade" id="delete_staff">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body text-center position-relative z-1">
+                        <img src="assets/img/bg/delete-modal-bg-01.png" alt="" class="img-fluid position-absolute top-0 start-0 z-n1">
+                        <img src="assets/img/bg/delete-modal-bg-02.png" alt="" class="img-fluid position-absolute bottom-0 end-0 z-n1">
+                        <div class="mb-3">
+                            <span class="avatar avatar-lg bg-danger text-white"><i class="ti ti-trash fs-24"></i></span>
+                        </div>
+                        <h5 class="fw-bold mb-1">Delete Confirmation</h5>
+                        <p class="mb-3">Are you sure want to delete?</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="javascript:void(0);" class="btn btn-light position-relative z-1 me-3" data-bs-dismiss="modal">Cancel</a>
+                            <a href="javascript:void(0);" class="btn btn-danger position-relative z-1">Yes, Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Delete Modal  -->

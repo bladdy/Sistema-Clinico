@@ -1,0 +1,124 @@
+            <!-- Start Content -->
+            <div class="content">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3 mb-3 border-1 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0"> Prescriptions </h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center fw-regular"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                
+                <div class=" d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <div class="search-set mb-3">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <div class="table-search d-flex align-items-center mb-0">
+                                <div class="search-input">
+                                    <a href="javascript:void(0);" class="btn-searchset"><i class="isax isax-search-normal fs-12"></i></a>
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                    <label> 
+                                    <input type="search" [(ngModel)]="searchDataValue" [ngModelOptions]="{ standalone: true }" type="search" (ngModelChange)="searchData(searchDataValue)" class="form-control form-control-sm" placeholder="Search" aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex table-dropdown mb-3 pb-1 right-content align-items-center flex-wrap row-gap-3">
+                        <app-filter/>
+
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn bg-white btn-md d-inline-flex align-items-center fw-normal rounded border text-dark px-2 py-1 fs-14" data-bs-toggle="dropdown">
+                               <span  class="me-1"> Sort By : </span>  Recent
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Desending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last Month</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last 7 Days</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                   <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="no-sort">
+                                    Prescription ID
+                                </th>
+                                <th mat-sort-header="patient">Patient</th>
+                                <th mat-sort-header="prescribed">Prescribed On</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>
+                                    <a [routerLink]="routes.doctorPrescriptionDetails">{{data.prescriptionId}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0);" class="avatar avatar-sm me-2">
+                                            <img src="assets/img/users/{{data.img}}" alt="product" class="rounded-circle">
+                                        </a>
+                                        <a href="javascript:void(0);">{{data.patient}}</a>
+                                    </div>
+                                </td>
+                                <td>{{data.prescribedOn}}</td>
+                                <td class="action-item">
+                                    <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu p-2">
+                                        <li>
+                                            <a [routerLink]="routes.doctorPrescriptionDetails" class="dropdown-item d-flex align-items-center">View</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_modal">Delete</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        } @if(tableData.length === 0){
+                            <tr>
+                            <td colspan="12" class="text-center text-dark">No matching records found</td>
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+                <app-custom-pagination *ngIf="row"/>
+            </div>
+            <!-- End Content -->

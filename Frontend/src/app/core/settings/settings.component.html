@@ -1,0 +1,57 @@
+            <!-- Start Content -->
+            <div class="content" id="profilePage">
+
+                <!-- Page Header -->
+                <div class="mb-3 border-bottom pb-3">
+                    <h4 class="fw-bold mb-0">Settings</h4>
+                </div>
+				<!-- End Page Header -->
+
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="settings-wrapper d-flex">
+
+                            <!-- Start Settings Sidebar -->
+                            <div class="sidebars settings-sidebar" id="sidebar2">
+                                <div class="sidebar-inner" data-simplebar>
+                                    <div id="sidebar-menu5" class="sidebar-menu mt-0 p-0">
+                                        <ul>
+                                            
+                                             @for(mainMenu of side_bar_data;track mainMenu){
+                                    @if(mainMenu.tittle==='Settings'){
+                                        @for(menu of mainMenu.menu;track menu){
+                                             <li class="submenu">
+                                            <a href="javascript:void(0);" (click)="openSubmenuOne(menu)" 
+                                            [ngClass]="{ subdrop: openSubmenuOneItem === menu}"
+                                            [class.active]="page===menu.base">
+                                                <i class="ti me-2" [class]="'ti-'+menu.icon"></i>
+                                                <span>{{menu.menuValue}}</span>
+                                                <span class="menu-arrow"></span>
+                                            </a>
+                                            <ul  [ngClass]="openSubmenuOneItem === menu ? 'd-block' : 'd-none'">
+                                                @for(subMenu of menu.subMenus;track subMenu){
+                                                <li><a [routerLink]="subMenu.route" routerLinkActive="active">{{subMenu.menuValue}}</a></li>
+                                               
+                                                }
+                                            </ul>
+                                        </li>
+                                        }
+                                    }
+                                }
+                            
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Settings Sidebar -->
+                                  <div class="card flex-fill mb-0 border-0 bg-light-500 shadow-none">
+                            <router-outlet></router-outlet>
+                            </div>
+                        </div>
+
+                    </div><!-- end card body -->
+                </div><!-- end card -->
+                                
+            </div>
+            <!-- End Content -->

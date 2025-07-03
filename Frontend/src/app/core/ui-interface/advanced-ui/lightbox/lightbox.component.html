@@ -1,0 +1,74 @@
+
+
+<!-- Page Header -->
+<div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+  <div class="flex-grow-1">
+      <h4 class="fs-18 fw-semibold mb-0">Light Box</h4>
+  </div>
+
+  <div class="text-end">
+      <ol class="breadcrumb m-0 py-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Advanced UI</a></li>
+
+          <li class="breadcrumb-item active">Light Box</li>
+      </ol>
+  </div>
+</div>
+<!-- /Page Header -->
+<div class="row">
+  <!-- Lightbox -->
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Single Image Lightbox</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          @for (image of albumsOne; track image; let i = $index) {
+            @if (i < 2) {
+              <div class="col-md-4 mb-2 mb-md-0">
+                <a (click)="open(i, albumsOne)"href="javascript:void(0);">
+                  <img
+                    class="img-fluid"
+                    [src]="image.src"
+                    alt="image"
+                    />
+                  </a>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Lightbox -->
+
+    <!-- Lightbox -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Image with Description</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            @for (image of albumsTwo; track image; let i = $index) {
+              @if (i > 2) {
+                <div class="col-md-4 mb-2 mb-md-0">
+                  <a (click)="open(i, albumsTwo)" href="javascript:void(0);">
+                    <img
+                      class="img-fluid"
+                      [src]="image.src"
+                      alt="image"
+                      />
+                    </a>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Lightbox -->
+    </div>

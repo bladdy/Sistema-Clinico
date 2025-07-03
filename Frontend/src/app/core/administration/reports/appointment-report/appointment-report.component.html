@@ -1,0 +1,297 @@
+            <!-- Start Content -->
+            <div class="content">
+
+                <!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 mb-3 pb-3 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0">Appointment Report</h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <!-- row start -->
+                <div class="row">
+
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">                       
+                        <div class="card shadow-sm flex-fill w-100 z-0">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="avatar avatar-sm bg-soft-primary border border-primary text-primary rounded-2 flex-shrink-0"><i class="ti ti-calendar-time fs-14"></i></span>
+                                    <span class="badge fw-medium bg-soft-success text-success flex-shrink-0 ms-2">+10%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                </div>  
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Total Appointments</p>
+                                        <h6 class="mb-0 fw-bold">850</h6>
+                                    </div>
+                                    <div id="s-col-11" class="chart-set no-tooltips">
+                                        <apx-chart [series]="barChart.series" 
+                       [chart]="barChart.chart"
+                       [dataLabels]="barChart.dataLabels"
+                       [plotOptions]="barChart.plotOptions"
+                       [yaxis]="barChart.yaxis" 
+                       [legend]="barChart.legend" 
+                       [fill]="barChart.fill"
+                       [stroke]="barChart.stroke" 
+                       [xaxis]="barChart.xaxis"
+                       [colors]="barChart.colors"
+                       [fill]="barChart.fill"
+                       [tooltip]="barChart.tooltip"></apx-chart>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">                       
+                        <div class="card shadow-sm flex-fill w-100 z-0">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="avatar avatar-sm bg-soft-success border border-success text-success rounded-2 flex-shrink-0"><i class="ti ti-calendar-up fs-14"></i></span>
+                                    <span class="badge fw-medium bg-soft-success text-success flex-shrink-0 ms-2">+11.5%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                </div>  
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Completed</p>
+                                        <h6 class="mb-0 fw-bold">720</h6>
+                                    </div>
+                                    <div id="s-col-12" class="chart-set no-tooltips">
+                                        <apx-chart [series]="barChart1.series" 
+                       [chart]="barChart1.chart"
+                       [dataLabels]="barChart1.dataLabels"
+                       [plotOptions]="barChart1.plotOptions"
+                       [yaxis]="barChart1.yaxis" 
+                       [legend]="barChart1.legend" 
+                       [fill]="barChart1.fill"
+                       [stroke]="barChart1.stroke" 
+                       [xaxis]="barChart1.xaxis"
+                       [colors]="barChart1.colors"
+                       [fill]="barChart1.fill"
+                       [tooltip]="barChart1.tooltip"></apx-chart>
+
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">                       
+                        <div class="card shadow-sm flex-fill w-100 z-0">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="avatar avatar-sm bg-soft-warning border border-warning text-warning rounded-2 flex-shrink-0"><i class="ti ti-calendar-down fs-14"></i></span>
+                                    <span class="badge fw-medium bg-soft-success text-success flex-shrink-0 ms-2">+8.43%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                </div>  
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Cancelled</p>
+                                        <h6 class="mb-0 fw-bold">65</h6>
+                                    </div>
+                                    <div id="s-col-13" class="chart-set no-tooltips">
+                                        <apx-chart [series]="barChart2.series" 
+                       [chart]="barChart2.chart"
+                       [dataLabels]="barChart2.dataLabels"
+                       [plotOptions]="barChart2.plotOptions"
+                       [yaxis]="barChart2.yaxis" 
+                       [legend]="barChart2.legend" 
+                       [fill]="barChart2.fill"
+                       [stroke]="barChart2.stroke" 
+                       [xaxis]="barChart2.xaxis"
+                       [colors]="barChart2.colors"
+                       [fill]="barChart2.fill"
+                       [tooltip]="barChart2.tooltip"></apx-chart>
+
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col start -->
+                    <div class="col-xl-3 col-md-6 d-flex">                       
+                        <div class="card shadow-sm flex-fill w-100 z-0">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="avatar avatar-sm bg-soft-danger border border-danger text-danger rounded-2 flex-shrink-0"><i class="ti ti-calendar-repeat fs-14"></i></span>
+                                    <span class="badge fw-medium bg-soft-success text-success flex-shrink-0 ms-2">+6.58%<i class="ti ti-arrow-up-right ms-1"></i></span>
+                                </div>  
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Rescheduled</p>
+                                        <h6 class="mb-0 fw-bold">40</h6>
+                                    </div>
+                                    <div id="s-col-14" class="chart-set no-tooltips">
+                                        <apx-chart [series]="barChart3.series" 
+                       [chart]="barChart3.chart"
+                       [dataLabels]="barChart3.dataLabels"
+                       [plotOptions]="barChart3.plotOptions"
+                       [yaxis]="barChart3.yaxis" 
+                       [legend]="barChart3.legend" 
+                       [fill]="barChart3.fill"
+                       [stroke]="barChart3.stroke" 
+                       [xaxis]="barChart3.xaxis"
+                       [colors]="barChart3.colors"
+                       [fill]="barChart3.fill"
+                       [tooltip]="barChart3.tooltip"></apx-chart>
+
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col end -->
+
+                </div>
+                <!-- row end -->
+
+                 <div class="card">
+                    <div class="card-body">
+
+                        <!-- start row -->
+                         <div class="row row-gap-2">
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Date</label>
+                                    <div class="input-group position-relative">
+                                        <input type="text" class="form-control date-range bookingrange rounded-end bg-white" bsDaterangepicker [(ngModel)]="bsRangeValue" name="time" [bsConfig]="{ adaptivePosition: true }" placeholder="20 Apr 25 - 20 Apr 25">
+                                        <span class="input-icon-addon fs-14 text-dark">
+                                            <i class="ti ti-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Patient</label>
+                                    <mat-select class="custom-mat-select select" placeholder="Select">
+                                        <mat-option value="1">Select</mat-option>
+                                        <mat-option value="1">Alberto Ripley</mat-option>
+                                        <mat-option value="1">Susan Babin</mat-option>
+                                        <mat-option value="1">Martin Lisa</mat-option>
+                                        <mat-option value="1">Stella Mary</mat-option>
+                                        <mat-option value="1">Carol Lam</mat-option>
+                                        <mat-option value="1">Jesus Adams</mat-option>
+                                        <mat-option value="1">Ezra Belcher</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Location</label>
+                                    <mat-select class="custom-mat-select select" placeholder="Select">
+                                        <mat-option value="1">Select</mat-option>
+                                        <mat-option value="1">California</mat-option>
+                                        <mat-option value="1">Options Enhanced</mat-option>
+                                        <mat-option value="1">New York</mat-option>
+                                        <mat-option value="1">Florida</mat-option>
+                                        <mat-option value="1">Illinois</mat-option>
+                                        <mat-option value="1">Georgia</mat-option>
+                                        <mat-option value="1">Washington</mat-option>
+                                        <mat-option value="1">Arizona</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Practioner</label>
+                                    <mat-select class="custom-mat-select select" placeholder="Select">
+                                        <mat-option value="1">Select</mat-option>
+                                        <mat-option value="1">Dr. Mick Thompson</mat-option>
+                                        <mat-option value="1">Dr. Sarah Johnson</mat-option>
+                                        <mat-option value="1">Dr. Emily Carter</mat-option>
+                                        <mat-option value="1">Dr. David Lee</mat-option>
+                                        <mat-option value="1">Dr. Anna Kim</mat-option>
+                                        <mat-option value="1">Dr. John Smith</mat-option>
+                                        <mat-option value="1">Dr. Lisa White</mat-option>
+                                        <mat-option value="1">Dr. Patrica Brown</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Designation</label>
+                                    <mat-select class="custom-mat-select select" placeholder="Select">
+                                        <mat-option value="1">Select</mat-option>
+                                        <mat-option value="1">Cardiologist</mat-option>
+                                        <mat-option value="1">Orthopedic Surgeon</mat-option>
+                                        <mat-option value="1">Pediatrician</mat-option>
+                                        <mat-option value="1">Gynecologist</mat-option>
+                                        <mat-option value="1">Psychiatrist</mat-option>
+                                        <mat-option value="1">Neurosurgeon</mat-option>
+                                        <mat-option value="1">Oncologist</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-lg-4">
+                                <div class="mb-0">
+                                    <label class="form-label">Status</label>
+                                    <tag-input [ngModelOptions]="{standalone: true}" [(ngModel)]="tags" [placeholder]="'Add new'"></tag-input>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <a href="javascript:void(0);" class="btn btn-dark"><i class="ti ti-player-play me-1"></i>Run Report</a>
+                                </div>
+                            </div><!-- end col -->
+                         </div>
+                        <!-- end row -->
+
+                    </div><!-- end card body -->
+                 </div><!-- end card -->
+
+                <div class="table-responsive">
+                    <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Patient</th>
+                                <th>Date & Time</th>
+                                <th>Invoice ID</th>
+                                <th>Practioner</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of tableData;track data){
+                            <tr>
+                                <td>{{data.patient}}</td>
+                                <td>{{data.dateTime}}</td>
+                                <td>{{data.invoiceID}}</td>
+                                <td><p class="text-dark fw-medium">{{data.practioner}}</p></td>
+                                <td>{{data.location}}</td>
+                                <td>
+                                    <span class="badge px-2 py-1 fs-13 fw-medium"
+                                    [ngClass]="data.status==='Checked In'?'badge-soft-warning border border-warning ':data.status==='Cancelled'?'badge-soft-danger border border-danger ': data.status==='Checked Out'?'badge-soft-primary border border-primary ':data.status==='Schedule'?'badge-soft-info border border-info ':'badge-soft-success border border-success'">
+                                    {{data.status}}
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                                
+            </div>
+            <!-- End Content -->

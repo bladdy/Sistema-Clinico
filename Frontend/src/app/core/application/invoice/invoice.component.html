@@ -1,0 +1,197 @@
+ <!-- Start Content -->
+			<div class="content content-two">
+
+                <!-- Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+                    <div class="flex-grow-1">
+                        <h4 class="fs-18 fw-semibold mb-0">Invoices</h4>
+                    </div>
+                    <div class="text-end">
+                        <ol class="breadcrumb m-0 py-0">
+                            <li class="breadcrumb-item"><a [routerLink]="routes.index">Home</a></li>                              
+                            <li class="breadcrumb-item active" aria-current="page">Invoices</li>
+                        </ol>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <!-- start row -->
+                <div class="row">
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center overflow-hidden mb-2">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Total Invoice</p>
+                                        <h6>$3,237.94</h6>
+                                    </div>
+                                </div>
+                                <div class="attendance-report-bar mb-2">
+                                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
+                                        <div class="progress-bar bg-pink" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="d-flex align-items-center text-truncate"><span class="text-success fs-12 d-flex align-items-center me-1"><i class="ti ti-arrow-wave-right-up me-1"></i>+32.40%</span>from last month</p>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center overflow-hidden mb-2">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Outstanding</p>
+                                        <h6>$3,237.94</h6>
+                                    </div>
+                                </div>
+                                <div class="attendance-report-bar mb-2">
+                                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
+                                        <div class="progress-bar bg-purple" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="d-flex align-items-center text-truncate"><span class="text-danger fs-12 d-flex align-items-center me-1"><i class="ti ti-arrow-wave-right-up me-1"></i>-4.40%</span>from last month</p>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center overflow-hidden mb-2">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Draft</p>
+                                        <h6>$3,237.94</h6>
+                                    </div>
+                                </div>
+                                <div class="attendance-report-bar mb-2">
+                                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
+                                        <div class="progress-bar bg-warning" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="d-flex align-items-center text-truncate"><span class="text-success fs-12 d-flex align-items-center me-1"><i class="ti ti-arrow-wave-right-up me-1"></i>12%</span>from last month</p>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center overflow-hidden mb-2">
+                                    <div>
+                                        <p class="mb-1 text-truncate">Total Overdue</p>
+                                        <h6>$3,237.94</h6>
+                                    </div>
+                                </div>
+                                <div class="attendance-report-bar mb-2">
+                                    <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px;">
+                                        <div class="progress-bar bg-danger" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="d-flex align-items-center text-truncate"><span class="text-danger fs-12 d-flex align-items-center me-1"><i class="ti ti-arrow-wave-right-up me-1"></i>-15.40%</span>from last month</p>
+                                </div>
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div><!-- end col -->
+
+                </div>
+                <!-- end row -->
+
+                <!-- start row -->
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div>
+                            <div class="d-flex align-items-center justify-content-between flex-wrap row-gap-3 mb-3">
+                                <h5 class="d-flex align-items-center mb-0">Invoices<span class="badge bg-soft-dark ms-2 text-dark fs-12">2000 Invoices</span></h5>
+                                <a [routerLink]="routes.addInvoices" class="btn btn-md btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Add Invoices</a>
+                            </div>
+                            <div class="card-body p-0">
+
+                                <div class="table-responsive table-nowrap">
+                                    <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable border">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>
+                                                    <div class="form-check form-check-md">
+                                                        <input class="form-check-input" type="checkbox" id="select-all">
+                                                    </div>
+                                                </th>
+                                                <th mat-sort-header="invoice">Invoice</th>
+                                                <th mat-sort-header="name">Name</th>
+                                                <th mat-sort-header="date">Created On</th>
+                                                <th mat-sort-header="total">Total</th>
+                                                <th mat-sort-header="amount">Amount Due</th>
+                                                <th mat-sort-header="ddate">Due Date</th>
+                                                <th mat-sort-header="status">Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (data of tableData;track data){
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check form-check-md">
+                                                        <input class="form-check-input" type="checkbox">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a [routerLink]="routes.invoiceDetails" class="tb-data">{{data.Invoice}}</a>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a [routerLink]="routes.invoiceDetails" class="avatar avatar-lg me-2">
+                                                            <img src="assets/img/users/{{data.Image}}" class="rounded-circle" alt="user">
+                                                        </a>
+                                                        <div>
+                                                            <h6 class="fw-medium mb-1 fs-14"><a [routerLink]="routes.invoiceDetails">{{data.Name}}</a>
+                                                            </h6>
+                                                            <span class="fs-12">{{data.Email}}</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{{data.Created_On}} </td>
+                                                <td>{{data.Total}}</td>
+                                                <td>{{data.Amount_Due}}</td>
+                                                <td>{{data.Due_Date}}</td>
+                                                <td>
+                                                    <span class="badge d-inline-flex align-items-center"
+                                                    [ngClass]="data.Status==='Pending'?'badge-soft-primary':data.Status==='Overdue'?'badge-soft-danger':data.Status==='Draft'?'badge-soft-warning':'badge-soft-success '">
+														<i class="ti ti-point-filled me-1"></i>{{data.Status}}
+													</span>
+                                                </td>
+                                                <td>
+                                                    <div class="action-icon d-inline-flex">
+                                                        <a [routerLink]="routes.invoiceDetails" class="me-2"><i class="ti ti-eye"></i></a>
+                                                        <a [routerLink]="routes.editInvoices" class="me-2"><i class="ti ti-edit"></i></a>
+                                                        <a href="#delete_modal" class="" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="ti ti-trash"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        } @if(tableData.length === 0){
+                                            <tr>
+                                            <td colspan="12" class="text-center text-dark">No matching records found</td>
+                                            </tr>
+                                        }
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <app-custom-pagination *ngIf="row"/>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                    
+                </div>
+                <!-- end row -->
+
+		    </div>
+			<!-- End Content -->

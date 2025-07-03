@@ -1,0 +1,141 @@
+            <!-- Start Content -->
+			<div class="content content-two">
+
+				<!-- Start Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3 mb-3 border-1 border-bottom">
+                    <div class="flex-grow-1">
+                        <h4 class="fw-bold mb-0"> Invoices <span class="badge badge-soft-primary border pt-1 px-2 border-primary fw-medium ms-2 fw-medium fs-13">Total Invoices : 582</span> </h4>
+                    </div>
+                    <div class="text-end d-flex">
+                        <!-- dropdown-->
+                        <div class="dropdown me-1">
+							<a href="javascript:void(0);" class="btn btn-md fs-14 fw-normal border bg-white rounded text-dark d-inline-flex align-items-center"  data-bs-toggle="dropdown">
+								Export<i class="ti ti-chevron-down ms-2"></i>
+							</a>
+							<ul class="dropdown-menu p-2">
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as PDF</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="javascript:void(0);">Download as Excel</a>
+								</li>
+							</ul>
+						</div>
+                    </div>
+				</div>
+				<!-- End Page Header -->
+
+                <div class=" d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                    <div class="search-set mb-3">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <div class="table-search d-flex align-items-center mb-0">
+                               <div class="search-input">
+                                    <a href="javascript:void(0);" class="btn-searchset"><i class="isax isax-search-normal fs-12"></i></a>
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                    <label> 
+                                    <input type="search" [(ngModel)]="searchDataValue" [ngModelOptions]="{ standalone: true }" type="search" (ngModelChange)="searchData(searchDataValue)" class="form-control form-control-sm" placeholder="Search" aria-controls="DataTables_Table_0">
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex table-dropdown mb-3 pb-1 right-content align-items-center flex-wrap row-gap-3">
+                        <app-filter></app-filter>
+
+                        <div class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle btn bg-white btn-md d-inline-flex align-items-center fw-normal rounded border text-dark px-2 py-1 fs-14" data-bs-toggle="dropdown">
+                               <span  class="me-1"> Sort By : </span>  Recent
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end p-2">
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Ascending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Desending</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last Month</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="dropdown-item rounded-1">Last 7 Days</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- start row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive table-nowrap">
+                                    <table matSort (matSortChange)="sortData($event)" class="table table-nowrap dataTable datatable">
+                                        <thead class="">
+                                            <tr>
+                                                <th mat-sort-header="id">Invoice ID</th>
+                                                <th mat-sort-header="description">Description</th>
+                                                <th mat-sort-header="cdate">Created Date</th>
+                                                <th mat-sort-header="ddate">Due Date</th>
+                                                <th mat-sort-header="amount">Amount</th>
+                                                <th mat-sort-header="status">Status</th>
+                                                <th mat-sort-header="action"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (data of tableData;track data){
+                                            <tr>
+                                                <td>
+                                                    <a href="">{{data.invoiceId}}</a>
+                                                </td>
+                                                <td>
+                                                    {{data.description}}
+                                                </td>
+                                                <td>
+                                                    {{data.createdDate}}
+                                                </td>
+                                                <td>{{data.dueDate}} </td>
+                                                <td>{{data.amount}}</td>
+                                                <td>
+                                                    <span class="badge  d-inline-flex align-items-center"
+                                                    [ngClass]="data.status==='Partially Paid'?'badge-soft-warning':data.status==='UnPaid'?'badge-soft-danger':'badge-soft-success'">
+														<i class="ti ti-point-filled me-1"></i>{{data.status}}
+													</span>
+                                                </td>
+                                                <td class="action-item">
+                                                    <a href="javascript:void(0);" data-bs-toggle="dropdown">
+                                                        <i class="ti ti-dots-vertical"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu p-2">
+                                                        <li>
+                                                            <a [routerLink]="routes.patientInvoiceDetails" class="dropdown-item d-flex align-items-center">View</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#delete_modal">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        } 
+                                        @if(tableData.length === 0){
+                                            <tr>
+                                            <td colspan="12" class="text-center text-dark">No matching records found</td>
+                                            </tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <app-custom-pagination *ngIf="row"/>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+		    </div>
+			<!-- End Content -->
