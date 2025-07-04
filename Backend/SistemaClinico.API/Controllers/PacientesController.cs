@@ -1,31 +1,50 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SistemaClinico.Core.DTOs.Pacientes;
 using SistemaClinico.Core.Interfaces;
 
-namespace SistemaClinico.API.Controllers
+namespace SistemaClinico.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class PacientesController : ControllerBase
 {
-    [Authorize]
-    [ApiController]
-    [Route("api/[controller]")]
-    public class PacientesController : ControllerBase
+    private readonly IPacienteService _pacienteService;
+
+    public PacientesController(IPacienteService pacienteService)
     {
-        private readonly IPermisoService _permisoService;
+        _pacienteService = pacienteService;
+    }
 
-        public PacientesController(IPermisoService permisoService)
-        {
-            _permisoService = permisoService;
-        }
-        [HttpPost]
-        public async Task<IActionResult> CrearPaciente()
-        {
-            int usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-            bool autorizado = await _permisoService.TienePermisoAsync(usuarioId, "Pacientes", "Crear");
-            if (!autorizado)
-                return Forbid("No tiene permiso para crear pacientes.");
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+        => Ok(await _pacienteService.GetAllAsync());
 
-            // Lógica para crear paciente
-            return Ok();
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+        var paciente = await _pacienteService.GetByIdAsync(id);
+        return paciente == null ? NotFound() : Ok(paciente);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] PacienteCreateDto dto)
+    {
+        var result = await _pacienteService.CreateAsync(dto);
+        return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, [FromBody] PacienteUpdateDto dto)
+    {
+        if (id != dto.Id) return BadRequest("ID en URL y DTO no coinciden.");
+        var updated = await _pacienteService.UpdateAsync(dto);
+        return updated ? NoContent() : NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _pacienteService.DeleteAsync(id);
+        return deleted ? NoContent() : NotFound();
     }
 }

@@ -7,7 +7,7 @@ namespace SistemaClinico.Infrastructure.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        //public DbSet<Paciente> Pacientes => Set<Paciente>();
+        public DbSet<Paciente> Pacientes => Set<Paciente>();
         public DbSet<Usuario> Usuarios => Set<Usuario>();
         public DbSet<Rol> Roles => Set<Rol>();
         public DbSet<Modulo> Modulos => Set<Modulo>();

@@ -1,0 +1,18 @@
+
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/sqlserver/linux/server:2019-latest
+    platform: linux/amd64
+    restart: always
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y" 
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd" 
+    ports: 
+      - "1433:1433" 
+    volumes: 
+      - sqlserverdata:/var/opt/mssql 
+
+volumes: 
+  sqlserverdata:

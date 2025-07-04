@@ -57,6 +57,7 @@ namespace SistemaClinico.Infrastructure.Services
 
             if (usuario == null)
                 throw new UnauthorizedAccessException("Usuario no encontrado");
+                
 
             var claims = new[]
             {
@@ -88,7 +89,7 @@ namespace SistemaClinico.Infrastructure.Services
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Clave, usuario.ClaveHash))
                 throw new UnauthorizedAccessException("Credenciales inválidas");
-
+            
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),

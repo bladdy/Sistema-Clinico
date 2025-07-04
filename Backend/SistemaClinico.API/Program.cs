@@ -10,11 +10,16 @@ using SistemaClinico.Infrastructure.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar DbContext
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-// Configurar servicios de autenticación
+// Agrega el DbContext con SQL Server
+/*builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));*/
 
+// Agrega el DbContext con SQLite
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Configurar servicios de autenticación
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPacienteService, PacienteService>();
 // Configurar autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

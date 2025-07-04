@@ -25,8 +25,9 @@ public class AuthController : ControllerBase
             var token = await _authService.LoginAsync(dto);
             return Ok(new { token });
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine("Error en login: " + ex.Message);
             return Unauthorized(new { message = "Correo o contraseña incorrectos." });
         }
     }
