@@ -14,7 +14,7 @@ namespace SistemaClinico.Core.Entities
         public string Telefono { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
         public string Exequatur { get; set; } = string.Empty;
-        public ICollection<Especialidad> Especialidades { get; set; } = new List<Especialidad>();
+        public ICollection<DoctorEspecialidad> DoctorEspecialidades { get; set; } = new List<DoctorEspecialidad>();
         public ICollection<HistoriaClinica> HistoriasClinicas { get; set; } = new List<HistoriaClinica>();
     }
     

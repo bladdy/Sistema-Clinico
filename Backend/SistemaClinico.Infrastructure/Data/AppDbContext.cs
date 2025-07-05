@@ -18,6 +18,7 @@ namespace SistemaClinico.Infrastructure.Data
         public DbSet<Doctor> Doctores => Set<Doctor>();
         public DbSet<HistoriaClinica> HistoriasClinicas => Set<HistoriaClinica>();
         public DbSet<Especialidad> Especialidades => Set<Especialidad>();
+        public DbSet<DoctorEspecialidad> DoctorEspecialidades => Set<DoctorEspecialidad>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
