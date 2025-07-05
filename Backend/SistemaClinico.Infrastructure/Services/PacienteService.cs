@@ -27,11 +27,11 @@ namespace SistemaClinico.Infrastructure.Services
                 Telefono = p.Telefono,
                 Correo = p.Correo,
                 FechaNacimiento = p.FechaNacimiento,
-                Genero = p.Genero
+                Genero = p.Genero.ToString() // Convert enum to string
             }).ToList();
         }
 
-        public async Task<PacienteResponseDto?> GetByIdAsync(int id)
+        public async Task<PacienteResponseDto> GetByIdAsync(int id)
         {
             var p = await _context.Pacientes.FindAsync(id);
             if (p == null) return null;
@@ -44,7 +44,7 @@ namespace SistemaClinico.Infrastructure.Services
                 Telefono = p.Telefono,
                 Correo = p.Correo,
                 FechaNacimiento = p.FechaNacimiento,
-                Genero = p.Genero
+                Genero = p.Genero.ToString() // Convert enum to string
             };
         }
 
@@ -71,7 +71,7 @@ namespace SistemaClinico.Infrastructure.Services
                 Telefono = paciente.Telefono,
                 Correo = paciente.Correo,
                 FechaNacimiento = paciente.FechaNacimiento,
-                Genero = paciente.Genero
+                Genero = paciente.Genero.ToString() // Convert enum to string
             };
         }
 
@@ -85,7 +85,7 @@ namespace SistemaClinico.Infrastructure.Services
             paciente.Telefono = dto.Telefono;
             paciente.Correo = dto.Correo;
             paciente.FechaNacimiento = dto.FechaNacimiento;
-            paciente.Genero = dto.Genero;
+            paciente.Genero = Enum.Parse<Genero>(dto.Genero, true);
 
             _context.Pacientes.Update(paciente);
             return await _context.SaveChangesAsync() > 0;

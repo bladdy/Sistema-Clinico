@@ -68,3 +68,7 @@
 ```bash
 git clone https://github.com/tu-usuario/Sistema-Clinico.git
 cd Sistema-Clinico
+
+
+dotnet ef migrations add AddMotivoDiagnosticoEntities --project SistemaClinico.Infrastructure --startup-project SistemaClinico.API
+dotnet ef database update --project SistemaClinico.Infrastructure --startup-project SistemaClinico.API

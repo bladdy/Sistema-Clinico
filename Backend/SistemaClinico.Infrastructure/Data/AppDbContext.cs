@@ -13,7 +13,11 @@ namespace SistemaClinico.Infrastructure.Data
         public DbSet<Modulo> Modulos => Set<Modulo>();
         public DbSet<Permiso> Permisos => Set<Permiso>();
         public DbSet<RolPermisoModulo> RolPermisoModulos => Set<RolPermisoModulo>();
-
+        public DbSet<MotivoConsulta> MotivosConsulta => Set<MotivoConsulta>();
+        public DbSet<Diagnostico> Diagnosticos => Set<Diagnostico>();
+        public DbSet<Doctor> Doctores => Set<Doctor>();
+        public DbSet<HistoriaClinica> HistoriasClinicas => Set<HistoriaClinica>();
+        public DbSet<Especialidad> Especialidades => Set<Especialidad>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -54,6 +58,7 @@ namespace SistemaClinico.Infrastructure.Data
                 new Permiso { Id = 5, Nombre = "PermitirTodo" }
             );
 
+
             // Seed Módulos (ejemplo)
             modelBuilder.Entity<Modulo>().HasData(
                 new Modulo { Id = 1, Nombre = "Pacientes" },
@@ -66,6 +71,24 @@ namespace SistemaClinico.Infrastructure.Data
             // Seed Rol Admin (permite todo)
             modelBuilder.Entity<Rol>().HasData(
                 new Rol { Id = 1, Nombre = "Admin" }
+            );
+
+            modelBuilder.Entity<MotivoConsulta>().HasData(
+                new MotivoConsulta { Id = 1, Nombre = "Dolor de cabeza" },
+                new MotivoConsulta { Id = 2, Nombre = "Fiebre" }
+            );
+
+            modelBuilder.Entity<Diagnostico>().HasData(
+                new Diagnostico { Id = 1, Nombre = "Migraña" },
+                new Diagnostico { Id = 2, Nombre = "Gripe" }
+            );
+            modelBuilder.Entity<Especialidad>().HasData(
+                new Especialidad { Id = 1, Nombre = "Neurología" },
+                new Especialidad { Id = 2, Nombre = "Pediatría" }
+            );
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor { Id = 1, Nombre = "Dr. Juan Perez" },
+                new Doctor { Id = 2, Nombre = "Dra. Maria Lopez" }
             );
 
             // Seed RolPermisoModulo para Admin: PermitirTodo en todos los módulos

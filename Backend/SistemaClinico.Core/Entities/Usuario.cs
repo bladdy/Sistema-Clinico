@@ -14,6 +14,6 @@ namespace SistemaClinico.Core.Entities
 
         // Relación con Rol
         public int RolId { get; set; }
-        public Rol? Rol { get; set; }
+        public Rol Rol { get; set; }
     }
 }

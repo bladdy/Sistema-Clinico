@@ -14,12 +14,28 @@ var builder = WebApplication.CreateBuilder(args);
 /*builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));*/
 
+
 // Agrega el DbContext con SQLite
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-// Configurar servicios de autenticación
+
+// 1. Configura la política CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()    // o .WithOrigins("http://localhost:4200") para producción
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+// Configurar servicios de inyección de dependencias
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPacienteService, PacienteService>();
+builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
+builder.Services.AddScoped<ICatalogoService, CatalogoService>();
+builder.Services.AddScoped<IDotoresService, DotoresService>();
+
 // Configurar autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -58,6 +74,8 @@ builder.Services.AddSwaggerGen(options =>
 
 
 var app = builder.Build();
+// 2. Usa CORS en la app
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {
