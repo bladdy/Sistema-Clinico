@@ -17,6 +17,7 @@ public class AuthController : ControllerBase
         _authService = authService;
     }
 
+    //Realizar un endpoint para asignar los roles y permisos
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
     {

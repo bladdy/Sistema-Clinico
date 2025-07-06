@@ -10,8 +10,9 @@ namespace SistemaClinico.Core.Entities
         public int id { get; set; }
         public int DoctorId { get; set; }
         public Doctor Doctor { get; set; } = null!;
-        
         public int EspecialidadId { get; set; }
         public Especialidad Especialidad { get; set; } = null!;
+        
+                
     }
 }

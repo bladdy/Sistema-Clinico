@@ -15,5 +15,10 @@ namespace SistemaClinico.Core.Entities
         // Relación con Rol
         public int RolId { get; set; }
         public Rol Rol { get; set; }
+
+        // Relaciones especializadas
+        //public Doctor Doctor { get; set; } = new Doctor();
+        //public Enfermero? Enfermero { get; set; }
+        //public Administrador? Administrador { get; set; }
     }
 }

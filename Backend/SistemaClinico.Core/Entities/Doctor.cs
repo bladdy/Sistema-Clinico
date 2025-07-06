@@ -16,6 +16,8 @@ namespace SistemaClinico.Core.Entities
         public string Exequatur { get; set; } = string.Empty;
         public ICollection<DoctorEspecialidad> DoctorEspecialidades { get; set; } = new List<DoctorEspecialidad>();
         public ICollection<HistoriaClinica> HistoriasClinicas { get; set; } = new List<HistoriaClinica>();
-    }
-    
+        //public int UsuarioId { get; set; }
+        //public Usuario Usuario { get; set; }
+        
+    }    
 }

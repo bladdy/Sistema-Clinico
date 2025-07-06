@@ -71,6 +71,5 @@ namespace SistemaClinico.API.Controllers
             }
             return NoContent();
         }
-
     }
 }
