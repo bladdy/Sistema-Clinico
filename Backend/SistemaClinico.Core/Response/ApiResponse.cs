@@ -50,8 +50,7 @@ namespace SistemaClinico.Core.Response
             StatusCode = statusCode;
             Errors = errorMessage ?? new List<string>();
         }
-
-        public ApiResponse(bool success, string? message, int statusCode = 200)
+        public ApiResponse(bool success, string message, int statusCode = 200)
         {
             Success = success;
             Message = message;
