@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SistemaClinico.Core.DTOs.Doctores;
 using SistemaClinico.Core.Interfaces;
+using SistemaClinico.Core.Response;
 
 namespace SistemaClinico.API.Controllers
 {
@@ -19,57 +20,46 @@ namespace SistemaClinico.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetDoctorsAsync()
+        public async Task<IActionResult> GetAll()
         {
             var doctores = await _doctoresService.GetDoctorsAsync();
-            return Ok(doctores);
+            return Ok(new ApiResponse<IEnumerable<DoctorResponseDto>>(doctores, "Listado de doctores"));
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDoctorByIdAsync(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var doctor = await _doctoresService.GetDoctorByIdAsync(id);
             if (doctor == null)
-            {
-                return NotFound();
-            }
-            return Ok(doctor);
+                return NotFound(new ApiResponse<object>(404, "Doctor no encontrado"));
+
+            return Ok(new ApiResponse<DoctorResponseDto>(doctor, "Doctor obtenido"));
         }
+
         [HttpPost]
-        public async Task<IActionResult> CreateDoctorAsync([FromBody] DoctorCreateDto doctor)
+        public async Task<IActionResult> Create([FromBody] DoctorCreateDto dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var createdDoctor = await _doctoresService.CreateDoctorAsync(doctor);
-            return CreatedAtAction(nameof(GetDoctorByIdAsync), new { id = createdDoctor.Id }, createdDoctor);
+            var created = await _doctoresService.CreateDoctorAsync(dto);
+            return Ok(new ApiResponse<DoctorResponseDto>(created, "Doctor creado correctamente"));
         }
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDoctorAsync(int id, [FromBody] DoctorCreateDto doctor)
+        public async Task<IActionResult> Update(int id, [FromBody] DoctorCreateDto dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var updated = await _doctoresService.UpdateDoctorAsync(id, dto);
+            if (updated == null)
+                return NotFound(new ApiResponse<object>(404, "Doctor no encontrado"));
 
-            var updatedDoctor = await _doctoresService.UpdateDoctorAsync(id, doctor);
-            if (updatedDoctor == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(updatedDoctor);
+            return Ok(new ApiResponse<DoctorResponseDto>(updated, "Doctor actualizado correctamente"));
         }
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDoctorAsync(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var deleted = await _doctoresService.DeleteDoctorAsync(id);
-            if (!deleted)
-            {
-                return NotFound();
-            }
-            return NoContent();
+            var eliminado = await _doctoresService.DeleteDoctorAsync(id);
+            if (!eliminado)
+                return NotFound(new ApiResponse<object>(404, "Doctor no encontrado"));
+
+            return Ok(new ApiResponse<object>(200, "Doctor eliminado correctamente"));
         }
     }
 }

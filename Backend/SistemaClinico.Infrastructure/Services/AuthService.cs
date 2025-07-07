@@ -57,7 +57,7 @@ namespace SistemaClinico.Infrastructure.Services
 
             if (usuario == null)
                 throw new UnauthorizedAccessException("Usuario no encontrado");
-                
+
 
             var claims = new[]
             {
@@ -89,7 +89,7 @@ namespace SistemaClinico.Infrastructure.Services
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Clave, usuario.ClaveHash))
                 throw new UnauthorizedAccessException("Credenciales inválidas");
-            
+
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
@@ -120,33 +120,91 @@ namespace SistemaClinico.Infrastructure.Services
                     Id = u.Id,
                     Nombre = u.Nombre,
                     Correo = u.Correo,
-                    RolNombre = u.Rol != null ? u.Rol.Nombre : string.Empty
+                    RolNombre = u.Rol != null ? u.Rol.Nombre : string.Empty,
+                    Status = u.Status,
+                    FechaCreacion = u.FechaCreacion
                 })
+                //.Where(u => u.Status == true)
                 .ToListAsync();
         }
 
         public async Task<bool> RegisterAsync(RegisterRequestDto dto)
         {
-            var exists = await _context.Usuarios.AnyAsync(u => u.Correo == dto.Correo);
-            if (exists) return false;
-
-            // Buscar el rol por nombre
-            var rol = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre == dto.Rol);
-            if (rol == null)
-                return false; // o lanzar excepción
-
-            var usuario = new Usuario
+            try
             {
-                Nombre = dto.Nombre,
-                Correo = dto.Correo,
-                ClaveHash = BCrypt.Net.BCrypt.HashPassword(dto.Clave),
-                RolId = rol.Id
-            };
+                var exists = await _context.Usuarios.AnyAsync(u => u.Correo == dto.Correo);
+                if (exists) return false;
 
-            _context.Usuarios.Add(usuario);
+                // Buscar el rol por nombre
+                var rol = await _context.Roles.FirstOrDefaultAsync(r => r.Id == dto.RolId);
+                if (rol == null)
+                    return false; // o lanzar excepción
+
+                var usuario = new Usuario
+                {
+                    Nombre = dto.Nombre,
+                    Correo = dto.Correo,
+                    ClaveHash = BCrypt.Net.BCrypt.HashPassword(dto.Clave),
+                    RolId = rol.Id
+                };
+
+                _context.Usuarios.Add(usuario);
+                await _context.SaveChangesAsync();
+                if (dto.EsDoctor)
+                {
+                    var especialidades = await _context.Especialidades
+                        .Where(e => dto.EspecialidadIds.Contains(e.Id)).ToListAsync();
+
+                    var doctor = new Doctor
+                    {
+                        Nombre = dto.Nombre,
+                        Apellido = dto.Apellido!,
+                        Documento = dto.Documento!,
+                        Telefono = dto.Telefono!,
+                        Correo = dto.Correo,
+                        Exequatur = dto.Exequatur!,
+                        UsuarioId = usuario.Id,
+                        DoctorEspecialidades = especialidades.Select(e => new DoctorEspecialidad
+                        {
+                            EspecialidadId = e.Id
+                        }).ToList()
+                    };
+
+                    _context.Doctores.Add(doctor);
+                    await _context.SaveChangesAsync();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                return false;
+            }
+
+        }
+        public async Task<bool> UpdateUsuarioAsync(int id, UpdateUsuarioRequestDto dto)
+        {
+            var usuario = await _context.Usuarios.FindAsync(id);
+            if (usuario == null) return false;
+
+            usuario.Nombre = dto.Nombre;
+            usuario.Correo = dto.Correo;
+            usuario.RolId = dto.RolId;
+
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> CambiarEstadoUsuarioAsync(int id, bool estado)
+        {
+            var usuario = await _context.Usuarios.FindAsync(id);
+            if (usuario == null) return false;
+
+            usuario.Status = estado;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
 
 
     }

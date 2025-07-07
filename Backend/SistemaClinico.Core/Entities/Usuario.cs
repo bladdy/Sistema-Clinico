@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SistemaClinico.Core.Entities
 {
@@ -11,14 +7,10 @@ namespace SistemaClinico.Core.Entities
         public string Nombre { get; set; } = string.Empty;
         public string Correo { get; set; } = string.Empty;
         public string ClaveHash { get; set; } = string.Empty;
-
-        // Relación con Rol
         public int RolId { get; set; }
         public Rol Rol { get; set; }
-
-        // Relaciones especializadas
-        //public Doctor Doctor { get; set; } = new Doctor();
-        //public Enfermero? Enfermero { get; set; }
-        //public Administrador? Administrador { get; set; }
+        public Doctor Doctor { get; set; } // Relación inversa (uno a uno)
+        public DateTime FechaCreacion { get; set; }
+        public bool Status { get; set; } = true;
     }
 }

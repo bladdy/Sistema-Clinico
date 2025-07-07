@@ -49,6 +49,24 @@ namespace SistemaClinico.Infrastructure.Data
                 .HasOne(u => u.Rol)
                 .WithMany(r => r.Usuarios)
                 .HasForeignKey(u => u.RolId);
+            modelBuilder.Entity<Doctor>()
+                .HasOne(d => d.Usuario)
+                .WithOne(u => u.Doctor)
+                .HasForeignKey<Doctor>(d => d.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DoctorEspecialidad>()
+                .HasKey(de => new { de.DoctorId, de.EspecialidadId });
+
+            modelBuilder.Entity<DoctorEspecialidad>()
+                .HasOne(de => de.Doctor)
+                .WithMany(d => d.DoctorEspecialidades)
+                .HasForeignKey(de => de.DoctorId);
+
+            modelBuilder.Entity<DoctorEspecialidad>()
+                .HasOne(de => de.Especialidad)
+                .WithMany(e => e.DoctoresEspecialidades)
+                .HasForeignKey(de => de.EspecialidadId);
 
             // Seed Permisos
             modelBuilder.Entity<Permiso>().HasData(
@@ -87,10 +105,10 @@ namespace SistemaClinico.Infrastructure.Data
                 new Especialidad { Id = 1, Nombre = "Neurología" },
                 new Especialidad { Id = 2, Nombre = "Pediatría" }
             );
-            modelBuilder.Entity<Doctor>().HasData(
+            /*modelBuilder.Entity<Doctor>().HasData(
                 new Doctor { Id = 1, Nombre = "Dr. Juan Perez" },
                 new Doctor { Id = 2, Nombre = "Dra. Maria Lopez" }
-            );
+            );*/
 
             // Seed RolPermisoModulo para Admin: PermitirTodo en todos los módulos
             var rolAdminPermisos = new List<RolPermisoModulo>();

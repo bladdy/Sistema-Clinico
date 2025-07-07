@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace SistemaClinico.Core.DTOs.Auth
 {
-    public class UsuarioDto
+    public class RolResponseDto
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public string Correo { get; set; } = string.Empty;
-        public string RolNombre { get; set; } = string.Empty;
-        public DateTime FechaCreacion { get; set; } 
-        public bool Status { get; set; }
     }
 }

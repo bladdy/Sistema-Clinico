@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using SistemaClinico.Core.DTOs.Auth;
 
 namespace SistemaClinico.Core.Interfaces
@@ -13,6 +10,9 @@ namespace SistemaClinico.Core.Interfaces
         Task<string> GenerateTokenByUserIdAsync(int userId);
         Task<bool> ValidateTokenAsync(string token);
         Task<IEnumerable<UsuarioDto>> GetUsuariosAsync();
+
+        Task<bool> UpdateUsuarioAsync(int id, UpdateUsuarioRequestDto dto);
+        Task<bool> CambiarEstadoUsuarioAsync(int id, bool estado);
 
     }
 }
